@@ -1,0 +1,11 @@
+add_executable(asio_tcp_sync_server TcpSync.cpp)
+if(UNIX)
+  find_package(Threads REQUIRED)
+  target_link_libraries(asio_sync_server pthread)
+endif()
+
+add_executable(asio_tcp_async_server TcpAsync.cpp)
+if(UNIX)
+  find_package(Threads REQUIRED)
+  target_link_libraries(asio_sync_server pthread)
+endif()
