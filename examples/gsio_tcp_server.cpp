@@ -5,7 +5,7 @@
 
 size_t packetSize = 10;
 
-class EchoService : public gsio::tcp::TcpService
+class EchoService : public gsio::tcp::TcpServerService
 {
 	void onRawSocket(asio::ip::tcp::socket&) override
 	{
