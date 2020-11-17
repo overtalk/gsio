@@ -83,6 +83,7 @@ namespace gsio {
 						{
 							if (!ec)
 							{
+								// 了解 io_context 的 post，defer，dispatch 方法的区别
 								sharedSocket->context().post([=]()
 									{
 										callback(std::move(sharedSocket->socket()));

@@ -53,7 +53,7 @@ namespace gsio {
 				}
 			}
 
-			void  stop()
+			void stop()
 			{
 				std::lock_guard<std::mutex> lck(mPoolGuard);
 

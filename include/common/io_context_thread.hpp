@@ -4,6 +4,8 @@
 
 namespace gsio { namespace common {
 
+	// IoContextThread 包含n个网络worker线程
+	// 每个线程都会执行io_context.run()
 	class IoContextThread : public asio::noncopyable
 	{
 	private:
@@ -14,6 +16,9 @@ namespace gsio { namespace common {
 	public:
 		using Ptr = std::shared_ptr<IoContextThread>;
 
+		// concurrencyHint 是构造 io_context 时候使用
+		// 1 代表多线程，非1代表多线程
+		// https://blog.csdn.net/weixin_43827934/article/details/84590572
 		explicit IoContextThread(int concurrencyHint)
 			: mIoContentWrapper(concurrencyHint)
 		{}

@@ -38,9 +38,11 @@ namespace gsio { namespace common {
 
 		void run() const
 		{
+			// asio::io_service::work 可以防止 io_context 在没有io事件的情退出
 			asio::io_service::work worker(mIoContext);
 			while (!mIoContext.stopped())
 			{
+				// 调用这个方法的线程会阻塞
 				mIoContext.run();
 			}
 		}
