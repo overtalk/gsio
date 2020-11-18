@@ -17,12 +17,14 @@ namespace gsio {
 				public std::enable_shared_from_this<TcpAcceptor>
 			{
 			private:
-				gsio::common::IoContextThreadPool::Ptr mIoContextThreadPool;
 				asio::ip::tcp::acceptor mAcceptor;
+				gsio::common::IoContextThreadPool::Ptr mIoContextThreadPool;
 
 			public:
 				using Ptr = std::shared_ptr<TcpAcceptor>;
 
+				// listenContext 的 io_context 只给 tcp::acceptor 使用
+				// ioContextThreadPool 中的 io_context 给新建立的连接使用
 				static Ptr Make(asio::io_context& listenContext,
 					const gsio::common::IoContextThreadPool::Ptr& ioContextThreadPool,
 					const asio::ip::tcp::endpoint& endpoint)

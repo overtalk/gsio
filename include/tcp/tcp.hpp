@@ -37,12 +37,11 @@ namespace gsio {
 			std::shared_ptr<TcpServerService> mService;
 
 			// io_context
-			common::IoContextThread mAcceptorIoContext;
-			common::IoContextThreadPool::Ptr mSessionIoContextThreadPool;
+			common::IoContextThread mAcceptorIoContext; // 专门给 tcp acceptor 使用
+			common::IoContextThreadPool::Ptr mSessionIoContextThreadPool; // 供 tcp 连接使用
 
 			// session about 
 			size_t mRecvBufferSize{ 1024 };
-
 
 		public:
 			TcpServer(int port, size_t poolSize, int concurrencyHint)
